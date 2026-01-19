@@ -1,9 +1,9 @@
-name: Build Tiny App with Artifact
+name: Build and Deploy Tiny App
 
 on: push
 
 jobs:
-  build-app:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -25,6 +25,22 @@ jobs:
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
+        with:
+          name: tiny-app-build
+          path: build/
+
+      # 🔽 FAKE DEPLOY STEP
+      - name: Deploy app (fake server)
+        run: |
+          mkdir -p deploy
+          cp build/output.txt deploy/output.txt
+          echo "Deployed at $(date)" >> deploy/output.txt
+
+      - name: Show deployed files
+        run: |
+          echo "===== DEPLOYED FILE CONTENT ====="
+          cat deploy/output.txt
+
         with:
           name: tiny-app-build
           path: build/
