@@ -1,4 +1,4 @@
-name: Build Tiny App
+name: Build Tiny App with Artifact
 
 on: push
 
@@ -16,8 +16,15 @@ jobs:
       - name: Read app file
         run: cat app.txt
 
-      - name: Fake build step
+      - name: Build app (create build output)
         run: |
-          echo "Building app..."
-          sleep 2
-          echo "Build completed successfully 🎉"
+          mkdir -p build
+          echo "Build output file" > build/output.txt
+          echo "App content:" >> build/output.txt
+          cat app.txt >> build/output.txt
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: tiny-app-build
+          path: build/
