@@ -1,11 +1,23 @@
-name: Hello Action
+name: Build Tiny App
 
 on: push
 
 jobs:
-  say-hello:
+  build-app:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Print hello
-        run: echo "Hello Saranya 👋 from GitHub Actions"
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Show repo files
+        run: ls -la
+
+      - name: Read app file
+        run: cat app.txt
+
+      - name: Fake build step
+        run: |
+          echo "Building app..."
+          sleep 2
+          echo "Build completed successfully 🎉"
