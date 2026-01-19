@@ -1,6 +1,7 @@
 name: Build and Deploy Tiny App
 
-on: push
+on:
+  push:
 
 jobs:
   build-and-deploy:
@@ -29,7 +30,6 @@ jobs:
           name: tiny-app-build
           path: build/
 
-      # 🔽 FAKE DEPLOY STEP
       - name: Deploy app (fake server)
         run: |
           mkdir -p deploy
