@@ -1,0 +1,2 @@
+Hello from my tiny app 🚀
+This app is built by GitHub Actions 💙
