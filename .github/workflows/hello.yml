@@ -28,7 +28,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: tiny-app-build
-          path: build/
+          path: build
 
       - name: Deploy app (fake server)
         run: |
@@ -41,6 +41,3 @@ jobs:
           echo "===== DEPLOYED FILE CONTENT ====="
           cat deploy/output.txt
 
-        with:
-          name: tiny-app-build
-          path: build/
